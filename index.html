@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red Room</title>
+
+  <!-- Google Font for Creepy Effect -->
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #2b0000, #0a0000);
+      color: crimson;
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background-color: #000000;
+      color: crimson;
+      text-align: center;
+      font-family: 'Creepster', cursive;
+      padding-top: 5px;
+    }
+    .header h1 {
+      font-size: 3em;
+      margin-bottom: 5px;
+      text-shadow: 2px 5px 30px #cf0909;
+    }
+    .header h1:hover {
+      color: #cf0909;
+      text-shadow: 2px 5px 30px #ff5900;
+      transition: all 0.3s ease-in-out;
+    }
+    .header p {
+      font-size: 1.3em;
+      text-shadow: 2px 5px 30px #cf0909;
+    }
+    .header p:hover {
+      color: #cf0909;
+      text-shadow: 2px 5px 30px #ff5900;
+      transition: all 0.3s ease-in-out;
+    }
+    .content {
+      padding: 120px 20px 60px 20px;
+      font-family: 'Courier New', Courier, monospace;
+      color: crimson;
+      text-align: center;
+    }
+    .content h2 {
+      font-size: 2em;
+      text-shadow: 2px 5px 30px #cf0909;
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: auto;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-color: #000000;
+      color: crimson;
+      text-align: center;
+      padding-top: 10px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2em;
+      }
+      .header p {
+        font-size: 1em;
+      }
+      .content h2 {
+        font-size: 1.5em;
+      }
+      .content p {
+        font-size: 0.9em;
+      }
+    }
+
+    #types {
+      font-family: 'Courier New', Courier, monospace;
+      color: crimson;
+      font-size: 1.2rem;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    #popup {
+     position: fixed;
+     top: 0;
+     left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+
+    }
+    .popup-content {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  color: rgb(15, 0, 3);
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  background-image: url(aa.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  color: #FFFFFF;
+  text-shadow: 2px 5px 30px #000000;
+  max-width: 500px;
+  border: 2px solid crimson;
+  box-shadow: inset 0 0 90px rgba(255, 0, 0, 0.5), 0 0 90px rgba(255, 0, 0, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: shake 1s infinite;
+}
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+ 
+}
+
+    .popup-content button {
+      background-color: crimson;
+      color: #000000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .popup-content button:hover {
+      background-color: #ff5900;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>💀 RED ROOM</h1>
+    <p>Welcome to the red room.</p>
+  </div>
+
+  <div class="content">
+    <h2>Welcome to the red room</h2>
+    <p id="types"></p>
+  </div>
+ 
+  <div id="popup" style="display: none;">
+    <div class="popup-content">
+      <h2>Warning!</h2>
+      <button onclick="handleOk()">open</button>
+      <audio src="audio.mp3" preload="auto" id="bg-audio"></audio>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>MADE BY CTK MEMBER</p>
+  </footer>
+
+  <script>
+    const text = "In this room, if you click open in popup then rediret to main page.";
+    let i = 0;
+    const speed = 50;
+    const typeSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+    let allowSound = false;
+
+    // Allow sound only after user interaction
+    document.body.addEventListener("click", () => {
+      allowSound = true;
+    });
+
+    function typeWriter() {
+  if (i < text.length) {
+    const char = text.charAt(i);
+    document.getElementById("types").innerHTML += char;
+
+    if (char !== " " && allowSound) {
+      typeSound.currentTime = 0;
+      typeSound.play();
+    }
+
+    i++;
+
+    let delay = speed;
+    if (".!?".includes(char)) delay = 400;
+    if (",:".includes(char)) delay = 200;
+
+    setTimeout(typeWriter, delay);
+  } else {
+    // Jab typing khatam ho jaye, tab popup show karo
+    document.getElementById("popup").style.display = "flex";
+  }
+}
+    
+    // Auto-start typing on page load
+    window.onload = () => {
+      typeWriter();
+    };
+
+    function handleOk() {
+    Swal.fire({
+  title: '🔴 ACCESS DENIED',
+  html: `<b style="color:#ff0000;text-shadow:0 0 5px #ff0000;">THE ROOM IS NOT READY...</b><br><br>
+         <i style="color:#990000">You shouldn't have clicked that.</i>`,
+  icon: 'error',
+  confirmButtonText: 'TRY AGAIN',
+  confirmButtonColor: '#8B0000',
+  background: '#0a0000',
+  color: 'crimson',
+  backdrop: `
+    rgba(0, 0, 0, 0.95)
+    url("https://i.gifer.com/Vg0.gif")
+    center top
+    no-repeat
+  `,
+  customClass: {
+    popup: 'swal2-popup-glitch'
+  }
+});
+
+  const audio = document.getElementById("bg-audio");
+  if (audio) {
+    audio.volume = 0.5; // optional: set volume
+    audio.play().then(() => {
+      // ✅ Redirect after 2 seconds of playing
+      setTimeout(() => {
+        window.location.href = "index2.html";
+      }, 5000);
+    }).catch((err) => {
+      console.log("Audio play failed:", err);
+      // fallback redirect if autoplay fails
+      window.location.href = "index2.html";
+    });
+  } else {
+    // if audio tag is missing, just redirect
+    window.location.href = "index.html";
+  }
+
+  document.getElementById("popup").style.display = "none";
+}
+
+  
+ // Scary popups every 5 seconds after page is fully loaded
+const scaryMessages = [
+  "👁 Someone is watching you...",
+  "💀 You're not alone in the red room.",
+  "😱 Did you hear that sound?",
+  "🔪 It's already too late...",
+  "🕷 There's something behind you!",
+  "👣 Footsteps... getting closer...",
+  "🩸 The walls are bleeding again...",
+  "😈 She's in the mirror.",
+  "🌑 You shouldn't have opened the room.",
+];
+
+function randomScaryPopup() {
+  const msg = scaryMessages[Math.floor(Math.random() * scaryMessages.length)];
+  Swal.fire({
+    title: 'WARNING',
+    text: msg,
+    icon: 'warning',
+    confirmButtonText: 'Close',
+    background: '#1a0000',
+    color: 'crimson',
+    customClass: {
+      title: 'swal-title-shadow',
+      popup: 'swal-popup-bg'
+    },
+  
+  });
+}
+
+// Start showing popups 10s after page load (so typing finishes)
+setTimeout(() => {
+  setInterval(() => {
+    randomScaryPopup();
+  }, 5000); // every 5 seconds
+}, 10000);
+
+
+
+
+  </script>
+
+</body>
+</html>

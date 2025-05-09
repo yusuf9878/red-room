@@ -1,0 +1,300 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+    <title>CTK</title>  
+    <style>  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  
+  
+        body {  
+            height: 100vh;  
+            width: 100vw;  
+            background: linear-gradient(to bottom, #2b0000, #0a0000);  
+            color: crimson;  
+        }  
+  
+        .header {  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            right: 0;  
+            height: 100px;  
+            background-color: #000000;  
+            color: crimson;  
+            text-align: center;  
+            font-family: 'Creepster', cursive;  
+            padding-top: 5px;  
+            box-shadow: 4px 4px 80px red;  
+        }  
+  
+        .header h1 {  
+            font-size: 2.5em;  
+            margin-bottom: 5px;  
+            text-shadow: 2px 5px 30px #ffd900;  
+        }  
+  
+        .header h1:hover {  
+            color: #cf0909;  
+            text-shadow: 2px 5px 30px #ffffff;  
+            transition: all 0.3s ease-in-out;  
+        }  
+  
+        footer {  
+            position: fixed;  
+            bottom: 0;  
+            left: 0;  
+            right: 0;  
+            height: 50px;  
+            background-color: #000000;  
+            color: crimson;  
+            text-align: center;  
+            font-family: cursive;  
+            padding-top: 5px;  
+        }  
+  
+        footer a {  
+            text-decoration: none;  
+            color: cyan;  
+            font-weight: bold;  
+        }  
+  
+        .imgs {  
+            width: 100%;  
+            display: grid;  
+            margin-top: 110px;  
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  
+            gap: 15px;  
+            overflow: hidden;  
+        }  
+  
+        /* Mobile Devices (Screen width <= 600px) */  
+        @media (max-width: 600px) {  
+            .imgs {  
+                grid-template-columns: repeat(2, 1fr);  
+            }  
+        }  
+  
+        .img-container {  
+            position: relative;  
+        }  
+  
+        img {  
+            width: 100%;  
+            height: 150px;  
+            object-fit: cover;  
+            border-radius: 10px;  
+            border: 2px solid red;  
+            box-shadow: 4px 4px 10px red;  
+            display: block;  
+        }  
+  
+        .img-text {  
+            position: absolute;  
+            top: 50%;  
+            left: 50%;  
+            transform: translate(-50%, -50%);  
+            color: white;  
+            font-size: 2em;  
+            font-weight: bold;  
+            text-align: center;  
+            opacity: 1;  
+            transition: opacity 0.3s ease-in-out;  
+        }  
+  
+        .img-container:hover .img-text {  
+            opacity: 1;  
+        }  
+  
+        .img-text::before {  
+            content: "\25B6"; /* Unicode for play icon */  
+            font-size: 2em;  
+            color: white;  
+        }  
+        .blurred {
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+  }
+   
+    .fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('fog.gif') repeat;
+  opacity: 0.1;
+  animation: moveFog 10s linear forwards;
+  pointer-events: none;
+}
+@keyframes moveFog {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+body {
+ // animation: flicker 2s infinite;
+ 
+}
+
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.1; }
+}
+.horror-title {
+  font-family: 'Creepster', cursive;
+  color: red;
+  text-shadow: 2px 2px 5px black;
+  animation: drip 2s infinite;
+}
+
+@keyframes drip {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+    </style>  
+</head>  
+<body>  
+    <div id="main-content">
+    <div class="header">  
+        <h1 class="horror-title">capcher toucher kill</h1>  
+        <p>Welcome to ERROR 505</p>  
+    </div>  
+    <div class="imgs">  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text"></div>  
+        </div>  
+        <div class="img-container">  
+          <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text"></div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text"></div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text"></div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text">  
+            </div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text">  
+            </div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text">  
+            </div>  
+        </div>  
+        <div class="img-container">  
+            <a href=""><img src="a.jpg" alt="thumbnail"></a>  
+            <div class="img-text">  
+            </div>  
+        </div>  
+ <div class="fog"></div>
+    <footer>  
+        <p>made by <a href="">YUSUF KHAN</a></p>  
+    </footer>  
+  </div>
+ 
+    <script>  
+        // JavaScript to dynamically add text to each image  
+        document.addEventListener('DOMContentLoaded', function() {  
+            const imgContainers = document.querySelectorAll('.img-container');  
+              
+            imgContainers.forEach(container => {  
+                const imgText = container.querySelector('.img-text');  
+                imgText.textContent = "";  // Ensure no additional text if not needed  
+            });  
+        });
+
+        // Function to play the sound every 5 seconds
+        // Function to play the sound every 5 seconds
+const audio1 = new Audio('s.mp3');  // First audio element
+const audio2 = new Audio('foot.mp3');  // Second audio element
+
+setInterval(() => {
+    audio1.volume = 0.5;  // Set volume for first sound
+    audio1.play();  // Play the first sound
+    
+    // After the first sound finishes, play the second one
+    audio1.onended = function() {
+        audio2.volume = 1;  // Set volume for second sound
+        audio2.play();  // Play the second sound
+    };
+}, 2000);  // 20 seconds interval (first sound and second sound will play in sequence)
+        
+        //new Sounds//
+        
+          window.onload = function() {
+  // Add blur when popup opens
+  Swal.fire({
+    title: 'Use Earphone or Bluetooth',
+    text: 'Please connect your earphone or Bluetooth headset for best experience, then click OK.',
+    icon: 'info',
+    confirmButtonText: 'OK',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    background:'#ff0a00',
+    color:'black',
+    
+    didOpen: () => {
+      document.getElementById("main-content").classList.add("blurred");
+    },
+    willClose: () => {
+      document.getElementById("main-content").classList.remove("blurred");
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Show content (already blurred removed above)
+      document.getElementById("main-content").style.display = "block";
+    }
+  });
+};
+        setTimeout(() => {
+  Swal.fire({
+    title: 'RUN!',
+    text: 'It is coming for you...',
+    imageUrl: 'wrong.jpg',
+    background: '#000',
+    color: 'red',
+    customClass: {
+      title: 'swal-title-shadow',
+      popup: 'swal-popup-bg'
+    }
+  });
+  document.getElementById("scream-audio").play();
+}, 2000);
+
+const whispers = new Audio('w.mp3'); 
+setInterval(() => { 
+    if (whispers.paused) { 
+        whispers.volume = 0.5; 
+        whispers.play(); 
+    } 
+}, 2000); // every 15 seconds
+    </script>  
+    
+    
+    
+    
+</body>  
+</html>
